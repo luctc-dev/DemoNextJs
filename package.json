@@ -6,12 +6,13 @@
     "dev": "next dev",
     "build": "next build",
     "export": "next export",
-    "heroku-postbuild": "npm run start",
-    "start": "next start"
+    "heroku-postbuild": "npm run build",
+    "start": "next start -p $PORT"
   },
   "dependencies": {
     "isomorphic-unfetch": "^3.0.0",
     "next": "9.3.5",
+    "nprogress": "^0.2.0",
     "react": "16.13.1",
     "react-dom": "16.13.1"
   }

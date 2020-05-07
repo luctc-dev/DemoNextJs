@@ -22,10 +22,19 @@ const Posts = ({ data }) => {
   )
 }
 
-Posts.getInitialProps = async (ctx) => {
-  const res = await fetch("http://api-meme-zendvn-01.herokuapp.com/api/post/getListPagination.php?pagesize=3&currPage=1")
-  const json = await res.json()
+const delay = () => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve({ test: 'ahihi' });
+    }, 100000);
+  })
+}
 
+Posts.getInitialProps = async (ctx) => {
+  const page = ctx?.query?.page || 1;
+  const res = await fetch(`https://api-meme-zendvn-01.herokuapp.com/api/post/getListPagination.php?pagesize=${page}&currPage=1`)
+  const json = await res.json()
+  await delay();
   return { data: json.posts }
 }
 
